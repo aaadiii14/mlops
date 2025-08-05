@@ -8,7 +8,6 @@ on:
       - main
       - sdk-preview
     paths:
-      - jobs/autompg_pipeline/**
       - .github/workflows/cli-jobs-pipelines-auto-mpg-pipeline.yml
       - run-pipeline-jobs.sh
       - setup.sh
@@ -25,6 +24,10 @@ jobs:
     - name: setup
       run: bash setup.sh
       continue-on-error: true
+    - name: show directory
+      run: |
+          pwd
+          ls -R
     - name: run job
-      run: bash -x run-job.sh jobs/autompg_pipeline/pipeline.yml
-      working-directory: jobs/autompg_pipeline
+      run: bash -x run-job.sh
+
